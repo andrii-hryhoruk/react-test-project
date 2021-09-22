@@ -1,6 +1,6 @@
 # React TypeScript Starter Pack
 
- [DEMO LINK](https://andrii-hryhoruk.github.io/react_dynamic-list-of-goods/)
+ [DEMO LINK](https://andrii-hryhoruk.github.io/react-test-project/)
 
 ### Available Scripts
 
