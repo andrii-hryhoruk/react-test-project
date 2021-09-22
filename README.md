@@ -1,6 +1,6 @@
 # React TypeScript Starter Pack
 
-To use this template click `Use this template`
+ [DEMO LINK](https://andrii-hryhoruk.github.io/react_dynamic-list-of-goods/)
 
 ### Available Scripts
 
