@@ -14,7 +14,3 @@ interface Language {
   code: number;
   name: string;
 }
-
-interface ContinentsData {
-  continents: Continent[];
-}

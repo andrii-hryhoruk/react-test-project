@@ -1,5 +1,6 @@
-import React from 'react';
-import { LanguagesList } from '../LanguagesList/LanguagesList';
+import React, { useContext, useState } from 'react';
+import { LanguagesList } from '../LanguagesList';
+import { ContinentsContext } from '../../api/ContinentsContext';
 
 interface Props {
   country: Country
@@ -7,14 +8,24 @@ interface Props {
 
 export const CountriesList: React.FC<Props> = (props) => {
   const { country } = props;
+  const [isCountry, setIsCountry] = useState(false);
+  const { handleClick } = useContext(ContinentsContext);
 
   return (
     <li>
-      <p>{country.name}</p>
+      <button
+        type="button"
+        onClick={() => {
+          handleClick(isCountry, setIsCountry);
+        }}
+      >
+        {country.name}
+      </button>
       <ul>
-        {country.languages.map((language: Language) => (
+        {isCountry && (country.languages.map((language: Language) => (
           <LanguagesList key={language.code} language={language} />
-        ))}
+        ))
+        )}
       </ul>
     </li>
   );
