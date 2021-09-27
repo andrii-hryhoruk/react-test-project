@@ -12,8 +12,9 @@ export const CountriesList: React.FC<Props> = (props) => {
   const { handleClick } = useContext(ContinentsContext);
 
   return (
-    <li>
+    <li className="list-group-item d-flex align-items-start">
       <button
+        className="btn btn-outline-primary"
         type="button"
         onClick={() => {
           handleClick(isCountry, setIsCountry);
@@ -21,7 +22,7 @@ export const CountriesList: React.FC<Props> = (props) => {
       >
         {country.name}
       </button>
-      <ul>
+      <ul className="list-group-flush">
         {isCountry && (country.languages.map((language: Language) => (
           <LanguagesList key={language.code} language={language} />
         ))

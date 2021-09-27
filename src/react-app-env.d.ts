@@ -14,3 +14,9 @@ interface Language {
   code: number;
   name: string;
 }
+
+interface Context {
+  isContinent: boolean;
+  setIsContinent: (value: boolean) => void;
+  handleClick: (value: boolean, setState: (value: boolean) => void) => void;
+}

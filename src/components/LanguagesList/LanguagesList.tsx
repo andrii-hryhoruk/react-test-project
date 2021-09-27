@@ -7,15 +7,16 @@ interface Props {
 
 export const LanguagesList: React.FC<Props> = (props) => {
   const { language } = props;
-  const { handleClick, isContinent, setIsContinent } = useContext(ContinentsContext);
+  const { isContinent, setIsContinent } = useContext(ContinentsContext);
 
   return (
-    <li>
+    <li className="list-group-item d-flex align-items-start">
       <button
+        className="btn btn-outline-primary"
         type="button"
         name="lastChild"
         onClick={() => {
-          handleClick(isContinent, setIsContinent);
+          setIsContinent(!isContinent);
         }}
       >
         {language.name}

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { CountriesList } from '../CountriesList/CountriesList';
 import { ContinentsContext } from '../../api/ContinentsContext';
 
@@ -8,27 +8,40 @@ interface Props {
 
 export const ContinentsList: React.FC<Props> = (props) => {
   const { continent } = props;
-  const { handleClick } = useContext(ContinentsContext);
   const [isContinent, setIsContinent] = useState(false);
 
-  return (
-    <li>
-      <button
-        type="button"
-        onClick={() => {
-          handleClick(isContinent, setIsContinent);
-        }}
-      >
-        {continent.name}
-      </button>
+  const handleClick = (value: boolean,
+    setState: (a: boolean) => void) => {
+    setState(!value);
+  };
 
-      <ul>
-        {isContinent && (
-          continent.countries.map((country: Country) => (
-            <CountriesList key={country.code} country={country} />
-          ))
-        )}
-      </ul>
-    </li>
+  const providerValue = {
+    handleClick,
+    isContinent,
+    setIsContinent,
+  };
+
+  return (
+    <ContinentsContext.Provider value={providerValue}>
+      <li className="list-group-item d-flex align-items-start">
+        <button
+          className="btn btn-outline-primary"
+          type="button"
+          onClick={() => {
+            handleClick(isContinent, setIsContinent);
+          }}
+        >
+          {continent.name}
+        </button>
+
+        <ul className="list-group-flush">
+          {isContinent && (
+            continent.countries.map((country: Country) => (
+              <CountriesList key={country.code} country={country} />
+            ))
+          )}
+        </ul>
+      </li>
+    </ContinentsContext.Provider>
   );
 };
